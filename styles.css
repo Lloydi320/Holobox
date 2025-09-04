@@ -1,0 +1,134 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 1080px;
+  height: 1920px;
+  background: transparent;
+  font-family: "Arial", sans-serif;
+  overflow: hidden;
+  position: relative;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.step {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.step.active {
+  display: block;
+}
+
+/* Button Styles */
+.btn {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 20px 40px;
+  font-size: 24px;
+  font-weight: bold;
+  border-radius: 12px;
+  cursor: pointer;
+  position: absolute;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  min-width: 200px;
+  text-align: center;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.btn-bottom-center {
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.btn-bottom-left {
+  bottom: 80px;
+  left: 80px;
+}
+
+/* Text Box Styles */
+.text-box {
+  position: absolute;
+  right: 80px;
+  top: 200px;
+  width: 400px;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.text-box h2 {
+  font-size: 32px;
+  margin-bottom: 24px;
+  color: #667eea;
+}
+
+.text-box p {
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+/* 3D Model Viewer */
+.model-viewer {
+  position: absolute;
+  right: 80px;
+  top: 200px;
+  width: 400px;
+  height: 600px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+#threejs-container {
+  width: 100%;
+  height: 100%;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 1080px) {
+  body {
+    width: 100vw;
+    height: 100vh;
+    min-height: 1920px;
+  }
+
+  .text-box,
+  .model-viewer {
+    width: 350px;
+    right: 40px;
+  }
+
+  .btn-bottom-left {
+    left: 40px;
+  }
+}
