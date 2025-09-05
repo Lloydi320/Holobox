@@ -32,16 +32,9 @@ body {
   display: block;
 }
 
-/* Button Styles */
-.btn-bottom-center {
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%); /* keep only for centering */
-}
-
-/* Wrap scaling in a child element so translateX and scale don’t conflict */
+/* Base Button Styles */
 .btn {
-  position: absolute; /* important: makes bottom/left/right work */
+  position: absolute;
   background: transparent;
   color: #67e8f9;
   border: 2px solid #67e8f9;
@@ -54,7 +47,7 @@ body {
   text-align: center;
   z-index: 10;
 
-  /* only animate background + scale */
+  /* Animate only background + scale */
   transition: background 0.2s ease, transform 0.1s ease;
 }
 
@@ -62,7 +55,7 @@ body {
 .btn-bottom-center {
   bottom: 80px;
   left: 50%;
-  transform: translateX(-50%); /* keeps button centered */
+  transform: translateX(-50%); /* center positioning */
 }
 
 .btn-bottom-left {
@@ -75,16 +68,32 @@ body {
   right: 80px;
 }
 
-/* Hover / Active effects */
-.btn:hover {
-  transform: translateX(-50%) scale(1.05); /* keep centering + scale */
+/* Hover / Active per placement */
+
+/* Center button: keep translateX */
+.btn-bottom-center:hover {
+  transform: translateX(-50%) scale(1.05);
   background: rgba(103, 232, 249, 0.1);
 }
 
-.btn:active {
+.btn-bottom-center:active {
   transform: translateX(-50%) scale(0.95);
   background: rgba(103, 232, 249, 0.2);
 }
+
+/* Left & right buttons: only scale */
+.btn-bottom-left:hover,
+.btn-bottom-right:hover {
+  transform: scale(1.05);
+  background: rgba(103, 232, 249, 0.1);
+}
+
+.btn-bottom-left:active,
+.btn-bottom-right:active {
+  transform: scale(0.95);
+  background: rgba(103, 232, 249, 0.2);
+}
+
 
 
 /* Text Box Styles */
