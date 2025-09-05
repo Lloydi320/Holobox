@@ -41,6 +41,7 @@ body {
 
 /* Wrap scaling in a child element so translateX and scale don’t conflict */
 .btn {
+  position: absolute; /* important: makes bottom/left/right work */
   background: transparent;
   color: #67e8f9;
   border: 2px solid #67e8f9;
@@ -57,13 +58,31 @@ body {
   transition: background 0.2s ease, transform 0.1s ease;
 }
 
+/* Placement helpers */
+.btn-bottom-center {
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%); /* keeps button centered */
+}
+
+.btn-bottom-left {
+  bottom: 80px;
+  left: 40px;
+}
+
+.btn-bottom-right {
+  bottom: 80px;
+  right: 80px;
+}
+
+/* Hover / Active effects */
 .btn:hover {
-  transform: scale(1.05); /* clean scale, no sliding */
+  transform: translateX(-50%) scale(1.05); /* keep centering + scale */
   background: rgba(103, 232, 249, 0.1);
 }
 
 .btn:active {
-  transform: scale(0.95);
+  transform: translateX(-50%) scale(0.95);
   background: rgba(103, 232, 249, 0.2);
 }
 
