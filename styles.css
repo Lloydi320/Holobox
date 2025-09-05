@@ -100,7 +100,7 @@ body {
 .text-box {
   position: absolute;
   left: 80px;
-  top: 200px;
+  top: 400px;   /* moved lower */
   width: 400px;
   height: 600px;
   background: transparent;
