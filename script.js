@@ -1,5 +1,4 @@
-// Import Three.js library
-import * as THREE from "three"
+// Import Three.js library - removed, using global THREE from CDN
 
 class HoloboxInterface {
   constructor() {
@@ -18,14 +17,18 @@ class HoloboxInterface {
       this.goToStep(2)
     })
 
+    document.getElementById("backBtn2").addEventListener("click", () => {
+      this.goToStep(1)
+    })
+
     document.getElementById("view3DBtn").addEventListener("click", () => {
       this.goToStep(3)
       this.init3DModel()
     })
 
-    document.getElementById("backBtn").addEventListener("click", () => {
+    document.getElementById("backBtn3").addEventListener("click", () => {
       this.cleanup3D()
-      this.goToStep(2)
+      this.goToStep(1)
     })
   }
 
@@ -44,40 +47,39 @@ class HoloboxInterface {
     const container = document.getElementById("threejs-container")
 
     // Scene setup
-    this.scene = new THREE.Scene()
-    this.scene.background = new THREE.Color(0x000000)
+    this.scene = new window.THREE.Scene()
+    this.scene.background = new window.THREE.Color(0x000000)
 
     // Camera setup
-    this.camera = new THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000)
+    this.camera = new window.THREE.PerspectiveCamera(75, container.clientWidth / container.clientHeight, 0.1, 1000)
     this.camera.position.z = 5
 
     // Renderer setup
-    this.renderer = new THREE.WebGLRenderer({ antialias: true })
+    this.renderer = new window.THREE.WebGLRenderer({ antialias: true })
     this.renderer.setSize(container.clientWidth, container.clientHeight)
     this.renderer.setClearColor(0x000000, 1)
     container.appendChild(this.renderer.domElement)
 
-    // Create a rotating cube with gradient-like material
-    const geometry = new THREE.BoxGeometry(2, 2, 2)
-
-    // Create materials for each face with different colors
+    const geometry = new window.THREE.BoxGeometry(2, 2, 2)
     const materials = [
-      new THREE.MeshBasicMaterial({ color: 0x667eea }), // Right
-      new THREE.MeshBasicMaterial({ color: 0x764ba2 }), // Left
-      new THREE.MeshBasicMaterial({ color: 0x667eea }), // Top
-      new THREE.MeshBasicMaterial({ color: 0x764ba2 }), // Bottom
-      new THREE.MeshBasicMaterial({ color: 0x667eea }), // Front
-      new THREE.MeshBasicMaterial({ color: 0x764ba2 }), // Back
+      new window.THREE.MeshBasicMaterial({ color: 0x67e8f9 }), // Right - cyan
+      new window.THREE.MeshBasicMaterial({ color: 0xa5f3fc }), // Left - light cyan
+      new window.THREE.MeshBasicMaterial({ color: 0x67e8f9 }), // Top - cyan
+      new window.THREE.MeshBasicMaterial({ color: 0xa5f3fc }), // Bottom - light cyan
+      new window.THREE.MeshBasicMaterial({ color: 0x67e8f9 }), // Front - cyan
+      new window.THREE.MeshBasicMaterial({ color: 0xa5f3fc }), // Back - light cyan
     ]
 
-    this.cube = new THREE.Mesh(geometry, materials)
+    this.cube = new window.THREE.Mesh(geometry, materials)
+    this.cube.rotation.x = Math.PI / 4
+    this.cube.rotation.y = Math.PI / 4
     this.scene.add(this.cube)
 
     // Add some lighting
-    const ambientLight = new THREE.AmbientLight(0x404040, 0.6)
+    const ambientLight = new window.THREE.AmbientLight(0x404040, 0.6)
     this.scene.add(ambientLight)
 
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8)
+    const directionalLight = new window.THREE.DirectionalLight(0xffffff, 0.8)
     directionalLight.position.set(1, 1, 1)
     this.scene.add(directionalLight)
 
@@ -89,7 +91,7 @@ class HoloboxInterface {
   }
 
   animate() {
-    this.animationId = requestAnimationFrame(() => this.animate())
+    this.animationId = window.requestAnimationFrame(() => this.animate())
 
     if (this.cube) {
       this.cube.rotation.x += 0.01
@@ -112,7 +114,7 @@ class HoloboxInterface {
 
   cleanup3D() {
     if (this.animationId) {
-      cancelAnimationFrame(this.animationId)
+      window.cancelAnimationFrame(this.animationId)
       this.animationId = null
     }
 

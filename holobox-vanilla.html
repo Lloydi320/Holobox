@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Holobox Display Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            overflow: hidden;
+        }
+
+        .holobox-container {
+            width: 1080px;
+            height: 1920px;
+            position: relative;
+            background-color: black;
+            overflow: hidden;
+        }
+
+        /* Green sections for step 1 */
+        .green-section {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 256px;
+            background-color: #10b981;
+            display: none;
+        }
+
+        .green-top {
+            top: 0;
+        }
+
+        .green-bottom {
+            bottom: 0;
+        }
+
+        /* Button styles */
+        .btn {
+            position: absolute;
+            background: transparent;
+            color: #67e8f9;
+            border: 2px solid #67e8f9;
+            padding: 16px 48px;
+            border-radius: 8px;
+            font-size: 24px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        /* Updated hover effects to be more suitable for touchscreen - removed scale transform and added subtle glow */
+        .btn:hover {
+            background-color: rgba(21, 94, 117, 0.3);
+            border-color: #22d3ee;
+            box-shadow: 0 0 20px rgba(34, 211, 238, 0.4);
+        }
+
+        /* Updated active state to provide clear feedback for touch interaction */
+        .btn:active {
+            background-color: rgba(21, 94, 117, 0.5);
+            border-color: #0891b2;
+            box-shadow: 0 0 10px rgba(34, 211, 238, 0.6);
+        }
+
+        .start-btn {
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .back-btn-left {
+            bottom: 80px;
+            left: 32px;
+            font-size: 20px;
+            padding: 16px 32px;
+        }
+
+        .view-3d-btn {
+            bottom: 80px;
+            right: 32px;
+            font-size: 20px;
+            padding: 16px 32px;
+        }
+
+        .back-btn-center {
+            bottom: 80px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 20px;
+            padding: 16px 32px;
+        }
+
+        /* Text box styles */
+        .text-box {
+            position: absolute;
+            left: 32px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 384px;
+            height: 320px;
+            padding: 24px;
+            border: 2px solid #22d3ee;
+            border-radius: 8px;
+            background: transparent;
+            color: #67e8f9;
+            overflow-y: auto;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .text-box::-webkit-scrollbar {
+            display: none;
+        }
+
+        .text-box {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .text-box h3 {
+            color: #a5f3fc;
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .text-box p {
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+
+        /* 3D viewer styles */
+        .viewer-3d {
+            position: absolute;
+            right: 32px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 384px;
+            height: 600px;
+            border: 2px solid #22d3ee;
+            border-radius: 8px;
+            background: #111827;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .cube-3d {
+            width: 128px;
+            height: 128px;
+            position: relative;
+            transform-style: preserve-3d;
+            /* Added initial 45-degree rotation to match React version */
+            transform: rotateX(45deg) rotateY(45deg);
+            animation: rotate3d 4s linear infinite;
+            background: linear-gradient(135deg, #34d399, #3b82f6);
+            border: 2px solid #10b981;
+        }
+
+        @keyframes rotate3d {
+            /* Updated animation to rotate from current position */
+            0% { transform: rotateX(45deg) rotateY(45deg); }
+            100% { transform: rotateX(405deg) rotateY(405deg); }
+        }
+
+        /* Step visibility */
+        .step {
+            display: none;
+        }
+
+        .step.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="holobox-container">
+        <!-- Step 1: Start Screen -->
+        <div id="step1" class="step active">
+            <div class="green-section green-top"></div>
+            <div class="green-section green-bottom"></div>
+            <button class="btn start-btn" onclick="goToStep(2)">Start</button>
+        </div>
+
+        <!-- Step 2: Description Screen -->
+        <div id="step2" class="step">
+            <div class="text-box">
+                <h3>Lorem Ipsum</h3>
+                <p>"Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit..."</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id nunc finibus, porta dui vel, feugiat nisl. Integer interdum tortor id mauris mattis dapibus. Etiam finibus eros sem, a feugiat ipsum ultrices ac. Nulla ultrices urna sed fermentum tempor.</p>
+                <p>Quisque quis lobortis tortor. Vivamus lorem massa, elementum sit amet elit vitae, feugiat feugiat enim. Ut porta ligula urna. Donec gravida cursus mi, vitae condimentum ligula interdum nec.</p>
+            </div>
+            <button class="btn back-btn-left" onclick="goToStep(1)">Back</button>
+            <button class="btn view-3d-btn" onclick="goToStep(3)">View 3D Model</button>
+        </div>
+
+        <!-- Step 3: 3D Viewer Screen -->
+        <div id="step3" class="step">
+            <div class="viewer-3d">
+                <div class="cube-3d"></div>
+            </div>
+            <button class="btn back-btn-center" onclick="goToStep(1)">Back</button>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+
+        function goToStep(step) {
+            // Hide current step
+            document.getElementById(`step${currentStep}`).classList.remove('active');
+            
+            // Show new step
+            currentStep = step;
+            document.getElementById(`step${currentStep}`).classList.add('active');
+            
+            // Show/hide green sections based on step
+            const greenSections = document.querySelectorAll('.green-section');
+            if (step === 1) {
+                greenSections.forEach(section => section.style.display = 'block');
+            } else {
+                greenSections.forEach(section => section.style.display = 'none');
+            }
+        }
+
+        // Initialize green sections visibility
+        document.addEventListener('DOMContentLoaded', function() {
+            const greenSections = document.querySelectorAll('.green-section');
+            greenSections.forEach(section => section.style.display = 'block');
+        });
+    </script>
+</body>
+</html>

@@ -7,7 +7,7 @@
 body {
   width: 1080px;
   height: 1920px;
-  background: transparent;
+  background: black;
   font-family: "Arial", sans-serif;
   overflow: hidden;
   position: relative;
@@ -34,28 +34,29 @@ body {
 
 /* Button Styles */
 .btn {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
-  border: none;
+  background: transparent;
+  color: #67e8f9;
+  border: 2px solid #67e8f9;
   padding: 20px 40px;
   font-size: 24px;
   font-weight: bold;
   border-radius: 12px;
   cursor: pointer;
   position: absolute;
-  transition: all 0.3s ease;
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+  transition: all 0.2s ease;
   min-width: 200px;
   text-align: center;
+  z-index: 10;
 }
 
 .btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.4);
+  transform: scale(1.05);
+  background: rgba(103, 232, 249, 0.1);
 }
 
 .btn:active {
-  transform: translateY(0);
+  transform: scale(0.95);
+  background: rgba(103, 232, 249, 0.2);
 }
 
 .btn-bottom-center {
@@ -66,34 +67,46 @@ body {
 
 .btn-bottom-left {
   bottom: 80px;
-  left: 80px;
+  left: 40px;
+}
+
+.btn-bottom-right {
+  bottom: 80px;
+  right: 80px;
 }
 
 /* Text Box Styles */
 .text-box {
   position: absolute;
-  right: 80px;
+  left: 80px;
   top: 200px;
   width: 400px;
-  background: rgba(0, 0, 0, 0.8);
-  color: white;
+  height: 600px;
+  background: transparent;
+  color: #a5f3fc;
   padding: 40px;
+  border: 2px solid #67e8f9;
   border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(10px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.text-box::-webkit-scrollbar {
+  display: none;
 }
 
 .text-box h2 {
   font-size: 32px;
   margin-bottom: 24px;
-  color: #667eea;
+  color: #a5f3fc;
 }
 
 .text-box p {
   font-size: 18px;
   line-height: 1.6;
   margin-bottom: 20px;
-  opacity: 0.9;
+  color: #a5f3fc;
 }
 
 /* 3D Model Viewer */
@@ -105,13 +118,30 @@ body {
   height: 600px;
   border-radius: 16px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-  background: rgba(0, 0, 0, 0.1);
+  border: 2px solid #67e8f9;
+  background: transparent;
 }
 
 #threejs-container {
   width: 100%;
   height: 100%;
+}
+
+/* Green Sections for step 1 Holobox effect */
+.green-section {
+  position: absolute;
+  width: 100%;
+  height: 256px;
+  background: #10b981;
+  z-index: 1;
+}
+
+.green-top {
+  top: 0;
+}
+
+.green-bottom {
+  bottom: 0;
 }
 
 /* Responsive adjustments for smaller screens */

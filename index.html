@@ -9,26 +9,32 @@
 </head>
 <body>
     <div class="container">
-        <!-- Step 1: Start Button -->
+        <!-- Step 1: Start Button with Green Sections -->
         <div id="step1" class="step active">
+            <!-- Added green sections for Holobox effect -->
+            <div class="green-section green-top"></div>
+            <div class="green-section green-bottom"></div>
             <button id="startBtn" class="btn btn-bottom-center">Start</button>
         </div>
 
-        <!-- Step 2: Text Box + View 3D Model Button -->
+        <!-- Step 2: Text Box + Buttons -->
         <div id="step2" class="step">
             <div class="text-box">
-                <h2>Product Description</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
+                <!-- Updated to Lorem Ipsum content -->
+                <h2>Lorem Ipsum</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce id nunc finibus, porta dui vel, feugiat nisl. Integer interdum tortor id mauris mattis dapibus. Etiam finibus eros eget feugiat molestie ultrices ac. Nulla ultrices urna sed fermentum tempor.</p>
+                <p>Quisque quis lobortis tortor. Vivamus lorem massa, elementum sit amet elit vitae, feugiat feugiat enim. Ut porta ligula urna. Donec gravida cursus mi, vitae condimentum ligula interdum nec. Etiam lacinia eget lorem nec volutpat.</p>
+                <p>In gravida turpis nulla, vitae sodales sem dapibus quis. Sed porttitor lorem eget nisl sagittis, ut molestie orci tempor. Ut at rhoncus arcu, at faucibus lacus.</p>
             </div>
-            <button id="view3DBtn" class="btn btn-bottom-left">View 3D Model</button>
+            <!-- Added back button and repositioned view 3D button -->
+            <button id="backBtn2" class="btn btn-bottom-left">Back</button>
+            <button id="view3DBtn" class="btn btn-bottom-right">View 3D Model</button>
         </div>
 
         <!-- Step 3: 3D Model Viewer + Back Button -->
         <div id="step3" class="step">
             <div id="threejs-container" class="model-viewer"></div>
-            <button id="backBtn" class="btn btn-bottom-center">Back</button>
+            <button id="backBtn3" class="btn btn-bottom-center">Back</button>
         </div>
     </div>
 
