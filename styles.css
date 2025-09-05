@@ -41,7 +41,6 @@ body {
 
 /* Wrap scaling in a child element so translateX and scale don’t conflict */
 .btn {
-  display: inline-block;
   background: transparent;
   color: #67e8f9;
   border: 2px solid #67e8f9;
@@ -50,17 +49,16 @@ body {
   font-weight: bold;
   border-radius: 12px;
   cursor: pointer;
-  position: relative;
   min-width: 200px;
   text-align: center;
   z-index: 10;
 
-  /* Animate only background + scale */
+  /* only animate background + scale */
   transition: background 0.2s ease, transform 0.1s ease;
 }
 
 .btn:hover {
-  transform: scale(1.05); /* now only scaling, no “sliding” */
+  transform: scale(1.05); /* clean scale, no sliding */
   background: rgba(103, 232, 249, 0.1);
 }
 
