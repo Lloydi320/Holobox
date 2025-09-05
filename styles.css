@@ -25,7 +25,7 @@ body {
   position: absolute;
   top: 0;
   left: 0;
-  display: none;
+  display: none;  
 }
 
 .step.active {
@@ -43,37 +43,22 @@ body {
   border-radius: 12px;
   cursor: pointer;
   position: absolute;
-  transition: all 0.2s ease;
+  transition: background 0.2s ease, transform 0.1s ease; /* only animate what you need */
   min-width: 200px;
   text-align: center;
   z-index: 10;
 }
 
 .btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.05); /* subtle grow */
   background: rgba(103, 232, 249, 0.1);
 }
 
 .btn:active {
-  transform: scale(0.95);
+  transform: scale(0.95); /* tap feedback */
   background: rgba(103, 232, 249, 0.2);
 }
 
-.btn-bottom-center {
-  bottom: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.btn-bottom-left {
-  bottom: 80px;
-  left: 40px;
-}
-
-.btn-bottom-right {
-  bottom: 80px;
-  right: 80px;
-}
 
 /* Text Box Styles */
 .text-box {
